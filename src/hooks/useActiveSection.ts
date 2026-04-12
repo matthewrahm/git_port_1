@@ -1,10 +1,13 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 
 export function useActiveSection(ids: string[]): string {
   const [active, setActive] = useState('')
   const visibleRef = useRef(new Map<string, number>())
+  // Stabilize the ids array so the effect doesn't re-run on every render
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const stableIds = useMemo(() => ids, [ids.join(',')])
 
   useEffect(() => {
     const visible = visibleRef.current
@@ -41,13 +44,13 @@ export function useActiveSection(ids: string[]): string {
       { threshold: [0, 0.1, 0.25, 0.5, 0.75, 1], rootMargin: '0px 0px -20% 0px' }
     )
 
-    for (const id of ids) {
+    for (const id of stableIds) {
       const el = document.getElementById(id)
       if (el) observer.observe(el)
     }
 
     return () => observer.disconnect()
-  }, [ids])
+  }, [stableIds])
 
   return active
 }
