@@ -57,16 +57,16 @@ export function Hero() {
 
   return (
     <aside className="lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[380px] flex flex-col justify-between px-10 pt-16 pb-12 relative z-10">
-      {/* Glow */}
-      <div className="absolute top-0 left-0 w-[300px] h-[300px] pointer-events-none">
-        <div
-          className="w-full h-full rounded-full blur-[140px] opacity-[0.08]"
-          style={{ background: '#9945FF' }}
-        />
-      </div>
+      {/* Hero radial glow */}
+      <div
+        className="absolute -top-20 -left-20 w-[500px] h-[500px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 80% 60% at 30% 20%, oklch(0.5 0.25 295 / 12%), transparent)',
+        }}
+      />
 
       <div className="relative">
-        <h1 className="text-4xl font-bold tracking-tighter mb-3 animate-fade-in-up">
+        <h1 className="text-4xl font-bold tracking-[-0.04em] mb-3 animate-fade-in-up text-gradient">
           Matthew Rahm
         </h1>
 

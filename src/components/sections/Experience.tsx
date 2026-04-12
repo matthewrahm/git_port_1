@@ -4,17 +4,17 @@ import { experience } from '@/lib/experience'
 
 export function Experience() {
   return (
-    <section id="experience" className="px-12 py-24">
+    <section id="experience" className="px-6 sm:px-12 py-[var(--space-section)]">
       <RevealSection>
         <p className="font-mono text-xs uppercase tracking-widest text-accent mb-10">
           Experience
         </p>
       </RevealSection>
 
-      <div className="space-y-10 max-w-xl">
+      <div className="space-y-4 max-w-xl">
         {experience.map((role, i) => (
           <RevealSection key={role.id} delay={i * 80}>
-            <div className="group pl-5 border-l border-border-subtle hover:border-accent transition-colors duration-300">
+            <div className="group card-polished rounded-[var(--radius-lg)] p-5 hover:-translate-y-0.5">
               <div className="flex items-baseline justify-between gap-4 mb-1">
                 <p className="text-sm font-semibold text-text-primary">{role.company}</p>
                 <p className="font-mono text-xs text-text-muted shrink-0">{role.period}</p>

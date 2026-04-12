@@ -14,10 +14,8 @@ export default function Home() {
       <NetworkCanvas />
       <div className="noise-overlay" />
 
-      {/* Fixed sidebar on large screens, stacked header on mobile */}
       <Hero />
 
-      {/* Scrollable main content */}
       <main className="lg:ml-[380px] flex-1 relative z-10">
         <About />
         <Experience />

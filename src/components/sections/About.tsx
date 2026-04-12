@@ -2,7 +2,7 @@ import { RevealSection } from '@/components/ui/RevealSection'
 
 export function About() {
   return (
-    <section id="about" className="px-12 py-24">
+    <section id="about" className="px-6 sm:px-12 py-[var(--space-section)]">
       <RevealSection>
         <p className="font-mono text-xs uppercase tracking-widest text-accent mb-10">
           About
@@ -25,14 +25,14 @@ export function About() {
       </RevealSection>
 
       <RevealSection delay={160}>
-        <div className="mt-10 inline-flex items-center gap-6 border border-border-subtle rounded-lg px-5 py-4">
+        <div className="mt-10 inline-flex items-center gap-6 card-polished rounded-[var(--radius-lg)] px-5 py-4">
           <div>
             <p className="text-sm font-medium text-text-primary">Brigham Young University</p>
             <p className="text-xs text-text-muted mt-0.5">
-              B.S. Computer Science, Software Engineering &middot; 2023 – 2027
+              B.S. Computer Science, Software Engineering &middot; 2023 &ndash; 2027
             </p>
           </div>
-          <span className="font-mono text-xs text-accent border-l border-border-subtle pl-6">
+          <span className="font-mono text-xs text-accent border-l border-[var(--color-border-default)] pl-6">
             3.9 GPA
           </span>
         </div>

@@ -34,7 +34,6 @@ export function updateParticles(
   mouseY: number
 ) {
   for (const p of particles) {
-    // Mouse repulsion
     if (mouseX >= 0 && mouseY >= 0) {
       const dx = p.x - mouseX
       const dy = p.y - mouseY
@@ -46,14 +45,12 @@ export function updateParticles(
       }
     }
 
-    // Dampen velocity back toward drift speed
     p.vx *= 0.99
     p.vy *= 0.99
 
     p.x += p.vx
     p.y += p.vy
 
-    // Wrap edges
     if (p.x < 0) p.x = width
     if (p.x > width) p.x = 0
     if (p.y < 0) p.y = height
@@ -68,7 +65,7 @@ export function drawParticles(
 ) {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
-  // Draw connections
+  // Draw connections in purple
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x
@@ -76,7 +73,7 @@ export function drawParticles(
       const dist = Math.sqrt(dx * dx + dy * dy)
       if (dist < connectionDistance) {
         const opacity = (1 - dist / connectionDistance) * 0.14
-        ctx.strokeStyle = `rgba(59, 130, 246, ${opacity})`
+        ctx.strokeStyle = `rgba(153, 69, 255, ${opacity})`
         ctx.lineWidth = 0.5
         ctx.beginPath()
         ctx.moveTo(particles[i].x, particles[i].y)
@@ -86,9 +83,9 @@ export function drawParticles(
     }
   }
 
-  // Draw particles
+  // Draw particles in purple
   for (const p of particles) {
-    ctx.fillStyle = `rgba(59, 130, 246, ${p.opacity})`
+    ctx.fillStyle = `rgba(153, 69, 255, ${p.opacity})`
     ctx.beginPath()
     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
     ctx.fill()

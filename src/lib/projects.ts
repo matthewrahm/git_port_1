@@ -6,6 +6,8 @@ export interface Project {
   github: string
   color: string
   url?: string
+  /** Bento grid span: 'wide' = 2 cols, 'normal' = 1 col */
+  size?: 'wide' | 'normal'
 }
 
 export const projects: Project[] = [
@@ -16,6 +18,7 @@ export const projects: Project[] = [
     tags: ['TypeScript', 'Next.js', 'Prisma', 'Solana'],
     github: 'https://github.com/matthewrahm/lore',
     color: '#9945FF',
+    size: 'wide',
   },
   {
     id: 'token-launch-monitor',

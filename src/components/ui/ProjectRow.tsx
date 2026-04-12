@@ -17,32 +17,38 @@ export function ProjectRow({
   project: Project
   index: number
 }) {
+  const isWide = project.size === 'wide'
+
   return (
-    <RevealSection delay={index * 80}>
+    <RevealSection
+      delay={index * 80}
+      className={isWide ? 'md:col-span-2' : ''}
+    >
       <a
         href={project.github}
         target="_blank"
         rel="noopener noreferrer"
-        className="group block rounded-xl border border-border-subtle hover:border-border-default bg-bg-surface/40 hover:bg-bg-surface/80 transition-all duration-300 p-6 md:p-8"
+        data-spotlight
+        className="group block h-full rounded-[var(--radius-xl)] card-polished spotlight-card press-scale p-[var(--space-card-pad)]"
       >
-        {/* Color bar */}
+        {/* Color accent bar */}
         <div
-          className="w-10 h-1 rounded-full mb-5 group-hover:w-16 transition-all duration-300"
+          className="w-8 h-1 rounded-full mb-5 group-hover:w-14 transition-all duration-300"
           style={{ background: project.color }}
         />
 
-        <div className="flex items-start justify-between gap-4 mb-4">
-          <h3 className="text-xl md:text-2xl font-bold tracking-tight text-text-primary">
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <h3 className="text-lg font-semibold tracking-tight text-text-primary">
             {project.name}
           </h3>
-          <GitHubIcon className="w-5 h-5 text-text-muted group-hover:text-text-secondary transition-colors shrink-0 mt-1" />
+          <GitHubIcon className="w-4 h-4 text-text-muted group-hover:text-text-secondary transition-colors shrink-0 mt-0.5" />
         </div>
 
-        <p className="text-sm text-text-secondary leading-relaxed mb-5 max-w-xl">
+        <p className="text-sm text-text-secondary leading-relaxed mb-5">
           {project.description}
         </p>
 
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1.5 mt-auto">
           {project.tags.map((tag) => (
             <TechTag key={tag} label={tag} />
           ))}
