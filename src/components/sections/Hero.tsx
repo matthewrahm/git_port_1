@@ -10,7 +10,7 @@ function GitHubIcon({ className }: { className?: string }) {
   )
 }
 
-const BIO_TEXT = 'Software engineer. Crypto native.'
+const BIO_TEXT = 'Building on Solana. Trading tools, on-chain intelligence, DeFi.'
 const TYPE_SPEED = 40
 
 function TypeReveal() {
@@ -54,7 +54,7 @@ export function Hero() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div
             className="w-[500px] h-[200px] rounded-full blur-[120px] opacity-[0.12]"
-            style={{ background: '#3B82F6' }}
+            style={{ background: '#9945FF' }}
           />
         </div>
 

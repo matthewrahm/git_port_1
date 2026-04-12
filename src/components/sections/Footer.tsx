@@ -2,7 +2,6 @@ import { RevealSection } from '@/components/ui/RevealSection'
 
 const LINKS = [
   { label: 'GitHub', href: 'https://github.com/matthewrahm' },
-  { label: 'X', href: 'https://x.com/matthewrahm' },
   { label: 'Email', href: 'mailto:matthewrahm@gmail.com' },
 ]
 
