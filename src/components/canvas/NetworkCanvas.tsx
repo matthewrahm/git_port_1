@@ -65,7 +65,7 @@ export function NetworkCanvas() {
         mouseRef.current.x,
         mouseRef.current.y
       )
-      drawParticles(ctx!, particlesRef.current, connectionDistance)
+      drawParticles(ctx!, particlesRef.current, connectionDistance, mouseRef.current.x, mouseRef.current.y)
       animationRef.current = requestAnimationFrame(draw)
     }
 

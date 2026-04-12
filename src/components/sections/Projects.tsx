@@ -23,7 +23,7 @@ export function Projects() {
     <section id="projects" className="px-6 sm:px-12 py-[var(--space-section)]">
       <div className="max-w-3xl">
         <RevealSection>
-          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-10">
+          <p className="font-mono text-xs uppercase tracking-widest text-gradient-accent mb-10" data-text="Projects">
             Projects
           </p>
         </RevealSection>

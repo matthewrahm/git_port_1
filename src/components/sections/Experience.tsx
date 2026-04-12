@@ -6,7 +6,7 @@ export function Experience() {
   return (
     <section id="experience" className="px-6 sm:px-12 py-[var(--space-section)]">
       <RevealSection>
-        <p className="font-mono text-xs uppercase tracking-widest text-accent mb-10">
+        <p className="font-mono text-xs uppercase tracking-widest text-gradient-accent mb-10" data-text="Experience">
           Experience
         </p>
       </RevealSection>

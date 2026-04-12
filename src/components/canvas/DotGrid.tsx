@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 
+const PARALLAX_FACTOR = 0.02
+
 export function DotGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -39,7 +41,23 @@ export function DotGrid() {
 
     draw()
     window.addEventListener('resize', draw)
-    return () => window.removeEventListener('resize', draw)
+
+    let ticking = false
+    function onScroll() {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        canvas!.style.transform = `translateY(${-window.scrollY * PARALLAX_FACTOR}px)`
+        ticking = false
+      })
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('resize', draw)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   return (

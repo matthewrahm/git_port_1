@@ -94,6 +94,19 @@ body {
   transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
 }
 
+/* ── Vignette overlay ── */
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
 /* ── Film grain noise overlay ── */
 .noise-overlay {
   position: fixed;
@@ -157,6 +170,28 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ── Section title gradient ── */
+.text-gradient-accent {
+  position: relative;
+  background: linear-gradient(180deg, #c084fc 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #c084fc 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(6px);
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 /* ── Spotlight card glow (cursor-tracking) ── */

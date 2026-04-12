@@ -58,10 +58,14 @@ export function updateParticles(
   }
 }
 
+const GLOW_RADIUS = 280
+
 export function drawParticles(
   ctx: CanvasRenderingContext2D,
   particles: Particle[],
-  connectionDistance: number
+  connectionDistance: number,
+  mouseX = -1,
+  mouseY = -1,
 ) {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
@@ -72,7 +76,18 @@ export function drawParticles(
       const dy = particles[i].y - particles[j].y
       const dist = Math.sqrt(dx * dx + dy * dy)
       if (dist < connectionDistance) {
-        const opacity = (1 - dist / connectionDistance) * 0.14
+        let opacity = (1 - dist / connectionDistance) * 0.14
+
+        // Boost connections near cursor
+        if (mouseX >= 0) {
+          const midX = (particles[i].x + particles[j].x) / 2
+          const midY = (particles[i].y + particles[j].y) / 2
+          const mDist = Math.sqrt((midX - mouseX) ** 2 + (midY - mouseY) ** 2)
+          if (mDist < GLOW_RADIUS) {
+            opacity += (1 - mDist / GLOW_RADIUS) * 0.12
+          }
+        }
+
         ctx.strokeStyle = `rgba(153, 69, 255, ${opacity})`
         ctx.lineWidth = 0.5
         ctx.beginPath()
@@ -85,9 +100,22 @@ export function drawParticles(
 
   // Draw particles in purple
   for (const p of particles) {
-    ctx.fillStyle = `rgba(153, 69, 255, ${p.opacity})`
+    let opacity = p.opacity
+    let radius = p.radius
+
+    // Boost particles near cursor
+    if (mouseX >= 0) {
+      const d = Math.sqrt((p.x - mouseX) ** 2 + (p.y - mouseY) ** 2)
+      if (d < GLOW_RADIUS) {
+        const proximity = 1 - d / GLOW_RADIUS
+        opacity = Math.min(1, opacity + proximity * 0.35)
+        radius += proximity * 0.8
+      }
+    }
+
+    ctx.fillStyle = `rgba(153, 69, 255, ${opacity})`
     ctx.beginPath()
-    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
+    ctx.arc(p.x, p.y, radius, 0, Math.PI * 2)
     ctx.fill()
   }
 }

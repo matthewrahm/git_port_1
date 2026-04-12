@@ -1,5 +1,6 @@
 import { NetworkCanvas } from '@/components/canvas/NetworkCanvas'
 import { DotGrid } from '@/components/canvas/DotGrid'
+import { AmbientOrbs } from '@/components/canvas/AmbientOrbs'
 import { Hero } from '@/components/sections/Hero'
 import { About } from '@/components/sections/About'
 import { Experience } from '@/components/sections/Experience'
@@ -12,6 +13,8 @@ export default function Home() {
     <div className="lg:flex lg:min-h-screen">
       <DotGrid />
       <NetworkCanvas />
+      <AmbientOrbs />
+      <div className="vignette" />
       <div className="noise-overlay" />
 
       <Hero />
