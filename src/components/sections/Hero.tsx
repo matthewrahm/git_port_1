@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useActiveSection } from '@/hooks/useActiveSection'
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -13,12 +14,17 @@ function GitHubIcon({ className }: { className?: string }) {
 const BIO_TEXT = 'Building on Solana. Trading tools, on-chain intelligence, DeFi.'
 const TYPE_SPEED = 40
 
+const NAV_ITEMS = [
+  { label: 'About', id: 'about' },
+  { label: 'Experience', id: 'experience' },
+  { label: 'Projects', id: 'projects' },
+]
+
 function TypeReveal() {
   const [displayed, setDisplayed] = useState('')
   const [showCursor, setShowCursor] = useState(true)
 
   useEffect(() => {
-    // Delay before starting to type
     const startDelay = setTimeout(() => {
       let i = 0
       const interval = setInterval(() => {
@@ -26,7 +32,6 @@ function TypeReveal() {
         setDisplayed(BIO_TEXT.slice(0, i))
         if (i >= BIO_TEXT.length) {
           clearInterval(interval)
-          // Hide cursor after typing finishes
           setTimeout(() => setShowCursor(false), 1200)
         }
       }, TYPE_SPEED)
@@ -37,47 +42,83 @@ function TypeReveal() {
   }, [])
 
   return (
-    <span className="font-mono text-lg md:text-xl text-text-secondary">
+    <span className="font-mono text-sm text-text-secondary">
       {displayed}
       {showCursor && (
-        <span className="inline-block w-[2px] h-[1.1em] bg-accent ml-0.5 align-middle animate-blink" />
+        <span className="inline-block w-[2px] h-[1em] bg-accent ml-0.5 align-middle animate-blink" />
       )}
     </span>
   )
 }
 
 export function Hero() {
-  return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-8">
-      <div className="relative z-10 text-center max-w-3xl">
-        {/* Glow */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div
-            className="w-[500px] h-[200px] rounded-full blur-[120px] opacity-[0.12]"
-            style={{ background: '#9945FF' }}
-          />
-        </div>
+  const active = useActiveSection(['about', 'experience', 'projects'])
 
-        <h1 className="relative text-5xl md:text-8xl font-bold tracking-tighter mb-6 animate-fade-in-up">
+  return (
+    <aside className="lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[380px] flex flex-col justify-between px-10 pt-16 pb-12 relative z-10">
+      {/* Glow */}
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] pointer-events-none">
+        <div
+          className="w-full h-full rounded-full blur-[140px] opacity-[0.08]"
+          style={{ background: '#9945FF' }}
+        />
+      </div>
+
+      <div className="relative">
+        <h1 className="text-4xl font-bold tracking-tighter mb-3 animate-fade-in-up">
           Matthew Rahm
         </h1>
 
-        <div className="relative mb-8 animate-fade-in-up stagger-1 h-8">
+        <div className="h-6 mb-6 animate-fade-in-up stagger-1">
           <TypeReveal />
         </div>
 
-        <div className="relative animate-fade-in-up stagger-2">
-          <a
-            href="https://github.com/matthewrahm"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-text-muted hover:text-text-primary transition-colors"
-          >
-            <GitHubIcon className="w-5 h-5" />
-            <span className="text-sm font-mono">matthewrahm</span>
-          </a>
-        </div>
+        <p className="text-sm text-text-muted leading-relaxed max-w-[260px] animate-fade-in-up stagger-2">
+          CS student at BYU building real things in the gaps between coursework.
+        </p>
+
+        <nav className="mt-12 space-y-1 animate-fade-in-up stagger-3" aria-label="Page sections">
+          {NAV_ITEMS.map(({ label, id }) => {
+            const isActive = active === id
+            return (
+              <a
+                key={id}
+                href={`#${id}`}
+                className="group flex items-center gap-4 py-2"
+              >
+                <span
+                  className={`block h-px transition-all duration-300 ${
+                    isActive
+                      ? 'w-12 bg-text-primary'
+                      : 'w-6 bg-text-muted group-hover:w-12 group-hover:bg-text-secondary'
+                  }`}
+                />
+                <span
+                  className={`text-xs uppercase tracking-widest transition-colors duration-300 ${
+                    isActive
+                      ? 'text-text-primary'
+                      : 'text-text-muted group-hover:text-text-secondary'
+                  }`}
+                >
+                  {label}
+                </span>
+              </a>
+            )
+          })}
+        </nav>
       </div>
-    </section>
+
+      <div className="relative animate-fade-in-up stagger-4">
+        <a
+          href="https://github.com/matthewrahm"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-text-muted hover:text-text-primary transition-colors"
+        >
+          <GitHubIcon className="w-5 h-5" />
+          <span className="text-sm font-mono">matthewrahm</span>
+        </a>
+      </div>
+    </aside>
   )
 }

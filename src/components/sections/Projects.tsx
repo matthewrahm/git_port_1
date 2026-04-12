@@ -4,15 +4,15 @@ import { projects } from '@/lib/projects'
 
 export function Projects() {
   return (
-    <section className="relative z-10 px-8 py-32">
-      <div className="max-w-5xl mx-auto">
+    <section id="projects" className="px-12 py-24">
+      <div className="max-w-xl">
         <RevealSection>
-          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-16">
+          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-10">
             Projects
           </p>
         </RevealSection>
 
-        <div className="flex flex-col gap-4 max-w-2xl mx-auto">
+        <div className="flex flex-col gap-4">
           {projects.map((project, i) => (
             <ProjectRow key={project.id} project={project} index={i} />
           ))}
