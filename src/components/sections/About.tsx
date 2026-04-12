@@ -12,14 +12,14 @@ export function About() {
       <RevealSection delay={80}>
         <div className="space-y-4 max-w-xl">
           <p className="text-text-secondary leading-relaxed">
-            CS student at BYU studying Software Engineering, graduating 2027. I&apos;ve done
-            full-stack web, iOS, and data engineering at startups -- but most of my focus
-            now is on Solana. Trading infrastructure, on-chain intelligence, real-time
-            data systems.
+            Software Engineering student at BYU, graduating 2027. Background in
+            full-stack web, iOS, and data engineering across early-stage startups.
+            Current focus: Solana. Trading infrastructure, on-chain intelligence,
+            and real-time data systems.
           </p>
           <p className="text-text-secondary leading-relaxed">
-            I build tools I&apos;d want to use myself. Most of what I ship is in the meme coin
-            and DeFi space -- fast, composable, and wired to live on-chain data.
+            Everything ships with a bias toward the meme coin and DeFi space.
+            Fast, composable, and wired to live on-chain data.
           </p>
         </div>
       </RevealSection>

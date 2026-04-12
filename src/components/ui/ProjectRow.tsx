@@ -10,6 +10,50 @@ function GitHubIcon({ className }: { className?: string }) {
   )
 }
 
+function FeaturedCard({ project, index }: { project: Project; index: number }) {
+  return (
+    <RevealSection delay={index * 80} className="md:col-span-2">
+      <a
+        href={project.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-spotlight
+        className="group block h-full rounded-[var(--radius-xl)] featured-card spotlight-card press-scale p-6 sm:p-8 relative overflow-hidden"
+        style={{ '--featured-color': project.color } as React.CSSProperties}
+      >
+        {/* Colored glow behind card */}
+        <div
+          className="absolute -top-32 -right-32 w-80 h-80 rounded-full blur-[120px] opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-500 pointer-events-none"
+          style={{ background: project.color }}
+        />
+
+        {/* Color accent bar -- wider for featured */}
+        <div
+          className="w-12 h-1 rounded-full mb-6 group-hover:w-20 transition-all duration-300"
+          style={{ background: project.color }}
+        />
+
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <h3 className="text-2xl font-semibold tracking-tight text-text-primary">
+            {project.name}
+          </h3>
+          <GitHubIcon className="w-5 h-5 text-text-muted group-hover:text-text-secondary transition-colors shrink-0 mt-1" />
+        </div>
+
+        <p className="text-[15px] text-text-secondary leading-relaxed mb-6 max-w-xl">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-1.5 mt-auto">
+          {project.tags.map((tag) => (
+            <TechTag key={tag} label={tag} />
+          ))}
+        </div>
+      </a>
+    </RevealSection>
+  )
+}
+
 export function ProjectRow({
   project,
   index,
@@ -17,6 +61,10 @@ export function ProjectRow({
   project: Project
   index: number
 }) {
+  if (project.featured) {
+    return <FeaturedCard project={project} index={index} />
+  }
+
   const isWide = project.size === 'wide'
 
   return (

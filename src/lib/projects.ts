@@ -8,9 +8,21 @@ export interface Project {
   url?: string
   /** Bento grid span: 'wide' = 2 cols, 'normal' = 1 col */
   size?: 'wide' | 'normal'
+  /** Featured project gets hero-level treatment */
+  featured?: boolean
 }
 
 export const projects: Project[] = [
+  {
+    id: 'solduel',
+    name: 'SolDuel',
+    description: 'PvP trading duels on Solana. Wager SOL on meme coin price movements in 30 and 60-second rounds. Anchor smart contract handles escrow, settlement, and payouts entirely on-chain. Real-time matchmaking with Supabase, Telegram bot for notifications.',
+    tags: ['Rust', 'Anchor', 'Solana', 'Next.js', 'TypeScript', 'Supabase'],
+    github: 'https://github.com/matthewrahm/solduel',
+    color: '#14F195',
+    size: 'wide',
+    featured: true,
+  },
   {
     id: 'lore',
     name: 'Lore',
