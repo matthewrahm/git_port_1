@@ -8,20 +8,21 @@ export interface Project {
   url?: string
   /** Bento grid span: 'wide' = 2 cols, 'normal' = 1 col */
   size?: 'wide' | 'normal'
-  /** Featured project gets hero-level treatment */
-  featured?: boolean
+  /** Path to project image/logo */
+  image?: string
 }
 
 export const projects: Project[] = [
   {
     id: 'solduel',
     name: 'SolDuel',
-    description: 'PvP trading duels on Solana. Wager SOL on meme coin price movements in 30 and 60-second rounds. Anchor smart contract handles escrow, settlement, and payouts entirely on-chain. Real-time matchmaking with Supabase, Telegram bot for notifications.',
+    description: 'PvP trading duels on Solana. Wager SOL on meme coin price movements in 30 and 60-second rounds. Over 1,000 SOL in volume wagered. Anchor smart contract handles escrow, settlement, and payouts entirely on-chain. Real-time matchmaking with Supabase, Telegram bot for notifications.',
     tags: ['Rust', 'Anchor', 'Solana', 'Next.js', 'TypeScript', 'Supabase'],
     github: 'https://github.com/matthewrahm/solduel',
+    url: 'https://solduel.xyz',
     color: '#14F195',
     size: 'wide',
-    featured: true,
+    image: '/projects/solduel.png',
   },
   {
     id: 'solscope',
@@ -30,6 +31,7 @@ export const projects: Project[] = [
     tags: ['Rust', 'Tokio', 'Ratatui', 'Helius', 'DexScreener'],
     github: 'https://github.com/matthewrahm/solscope',
     color: '#4d9fff',
+    image: '/projects/solscope.jpg',
   },
   {
     id: 'solana-forge',
@@ -38,6 +40,7 @@ export const projects: Project[] = [
     tags: ['Rust', 'Tokio', 'PostgreSQL', 'Axum', 'WebSocket'],
     github: 'https://github.com/matthewrahm/solana-forge',
     color: '#f97316',
+    image: '/projects/solforge.png',
   },
   {
     id: 'lore',
@@ -47,6 +50,7 @@ export const projects: Project[] = [
     github: 'https://github.com/matthewrahm/lore',
     color: '#9945FF',
     size: 'wide',
+    image: '/projects/LORE.jpg',
   },
   {
     id: 'token-launch-monitor',
