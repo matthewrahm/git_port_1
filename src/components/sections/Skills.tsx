@@ -3,7 +3,7 @@ import { RevealSection } from '@/components/ui/RevealSection'
 const SKILL_GROUPS = [
   {
     label: 'Languages',
-    skills: ['TypeScript', 'JavaScript', 'Java', 'Python'],
+    skills: ['Rust', 'TypeScript', 'JavaScript', 'Java', 'Python'],
   },
   {
     label: 'Frameworks',

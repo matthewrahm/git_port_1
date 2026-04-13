@@ -11,15 +11,17 @@ import { Footer } from '@/components/sections/Footer'
 export default function Home() {
   return (
     <div className="lg:flex lg:min-h-screen">
-      <DotGrid />
-      <NetworkCanvas />
-      <AmbientOrbs />
-      <div className="vignette" />
-      <div className="noise-overlay" />
+      <div className="animate-fade-in-up">
+        <DotGrid />
+        <NetworkCanvas />
+        <AmbientOrbs />
+        <div className="vignette" />
+        <div className="noise-overlay" />
+      </div>
 
       <Hero />
 
-      <main className="lg:ml-[380px] flex-1 relative z-10">
+      <main className="lg:ml-[380px] flex-1 relative z-10 animate-fade-in-up stagger-1">
         <About />
         <Experience />
         <Projects />
