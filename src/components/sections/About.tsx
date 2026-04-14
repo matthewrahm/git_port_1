@@ -10,7 +10,7 @@ export function About() {
       </RevealSection>
 
       <RevealSection delay={80}>
-        <div className="space-y-4 max-w-xl">
+        <div className="space-y-4 max-w-2xl">
           <p className="text-text-secondary leading-relaxed">
             Software Engineering student at BYU, graduating 2027. Background in
             full-stack web, iOS, and data engineering across early-stage startups.

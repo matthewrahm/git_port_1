@@ -11,7 +11,7 @@ export function Experience() {
         </p>
       </RevealSection>
 
-      <div className="space-y-4 max-w-xl">
+      <div className="space-y-4 max-w-5xl">
         {experience.map((role, i) => (
           <RevealSection key={role.id} delay={i * 80}>
             <div className="group card-polished rounded-[var(--radius-lg)] p-5 hover:-translate-y-0.5">
