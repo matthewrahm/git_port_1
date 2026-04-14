@@ -27,7 +27,7 @@ function LinkedInIcon({ className }: { className?: string }) {
 
 const LINKS = [
   { label: 'GitHub', href: 'https://github.com/matthewrahm', icon: GitHubIcon },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/matthewrahm', icon: LinkedInIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/matthew-rahm-4ab000348/', icon: LinkedInIcon },
   { label: 'Email', href: 'mailto:matthewrahm@gmail.com', icon: MailIcon },
 ]
 
