@@ -35,15 +35,6 @@ export const projects: Project[] = [
     image: '/projects/LORE.jpg',
   },
   {
-    id: 'solscope',
-    name: 'solscope',
-    description: 'Terminal analytics dashboard for Solana wallets. Real-time portfolio with USD values, decoded transaction history, whale tracker with persistent config, and token lookup with live price ticker and security audits. Vim-style keyboard navigation, 30s auto-refresh sparklines.',
-    tags: ['Rust', 'Tokio', 'Ratatui', 'Helius', 'DexScreener'],
-    github: 'https://github.com/matthewrahm/solscope',
-    color: '#4d9fff',
-    image: '/projects/solscope.jpg',
-  },
-  {
     id: 'hyper-track',
     name: 'hyper-track',
     description: 'Hyperliquid perpetual futures wallet discovery and tracking engine. Scans vault followers to find active traders, scores wallets on 10 risk-adjusted metrics (Sharpe, Sortino, drawdown, profit factor), classifies trading styles, and serves a live leaderboard. Async polling engine with priority queue, partitioned Postgres, and materialized views.',
@@ -51,6 +42,15 @@ export const projects: Project[] = [
     github: 'https://github.com/matthewrahm/hyper-track',
     color: '#00C853',
     size: 'wide',
+  },
+  {
+    id: 'solscope',
+    name: 'solscope',
+    description: 'Terminal analytics dashboard for Solana wallets. Real-time portfolio with USD values, decoded transaction history, whale tracker with persistent config, and token lookup with live price ticker and security audits. Vim-style keyboard navigation, 30s auto-refresh sparklines.',
+    tags: ['Rust', 'Tokio', 'Ratatui', 'Helius', 'DexScreener'],
+    github: 'https://github.com/matthewrahm/solscope',
+    color: '#4d9fff',
+    image: '/projects/solscope.jpg',
   },
   {
     id: 'solana-forge',
