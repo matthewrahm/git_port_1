@@ -42,6 +42,7 @@ export const projects: Project[] = [
     github: 'https://github.com/matthewrahm/hyper-track',
     color: '#00C853',
     size: 'wide',
+    image: '/projects/hyper-track.png',
   },
   {
     id: 'solscope',
@@ -68,5 +69,6 @@ export const projects: Project[] = [
     tags: ['Python', 'FastAPI', 'Next.js', 'Hyperliquid', 'ccxt'],
     github: 'https://github.com/matthewrahm/hyper-fund',
     color: '#3B82F6',
+    image: '/projects/hyper-fund.png',
   },
 ]
