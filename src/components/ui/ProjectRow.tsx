@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { TechTag } from './TechTag'
 import { RevealSection } from './RevealSection'
 import type { Project } from '@/lib/projects'
@@ -23,59 +22,41 @@ function ExternalLinkIcon({ className }: { className?: string }) {
 
 function WideCardContent({ project }: { project: Project }) {
   return (
-    <div className={`flex ${project.image ? 'flex-col sm:flex-row sm:items-stretch gap-6 sm:gap-8' : 'flex-col'}`}>
-      <div className="flex-1 min-w-0 flex flex-col">
+    <div className="flex flex-col">
+      <div className="flex items-center justify-between mb-5">
         <div
-          className="w-8 h-1 rounded-full mb-5 group-hover:w-14 transition-all duration-300"
+          className="w-8 h-1 rounded-full group-hover:w-14 transition-all duration-300"
           style={{ background: project.color }}
         />
-
-        <div className="flex items-start justify-between gap-4 mb-3">
-          <h3 className="text-lg font-semibold tracking-tight text-text-primary">
-            {project.name}
-          </h3>
-          {project.url ? (
-            <div className="flex items-center gap-2 shrink-0 mt-0.5">
-              <a href={project.url} target="_blank" rel="noopener noreferrer" className="press-scale">
-                <ExternalLinkIcon className="w-4 h-4 text-text-muted hover:text-text-secondary transition-colors" />
-              </a>
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="press-scale">
-                <GitHubIcon className="w-4 h-4 text-text-muted hover:text-text-secondary transition-colors" />
-              </a>
-            </div>
-          ) : (
-            <GitHubIcon className="w-4 h-4 text-text-muted group-hover:text-text-secondary transition-colors shrink-0 mt-0.5" />
-          )}
-        </div>
-
-        <p className="text-sm text-text-secondary leading-relaxed mb-5">
-          {project.description}
-        </p>
-
-        <div className="flex flex-wrap gap-1.5 mt-auto">
-          {project.tags.map((tag) => (
-            <TechTag key={tag} label={tag} />
-          ))}
-        </div>
+        {project.url ? (
+          <div className="flex items-center gap-2">
+            <a href={project.url} target="_blank" rel="noopener noreferrer" className="press-scale">
+              <ExternalLinkIcon className="w-4 h-4 text-text-muted hover:text-text-secondary transition-colors" />
+            </a>
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="press-scale">
+              <GitHubIcon className="w-4 h-4 text-text-muted hover:text-text-secondary transition-colors" />
+            </a>
+          </div>
+        ) : (
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="press-scale">
+            <GitHubIcon className="w-4 h-4 text-text-muted hover:text-text-secondary transition-colors" />
+          </a>
+        )}
       </div>
 
-      {project.image && (
-        <div className="relative shrink-0 w-full sm:w-36 md:w-44 aspect-square sm:aspect-auto self-center sm:self-stretch flex items-center justify-center">
-          <div
-            className="absolute w-28 h-28 rounded-[28px] blur-[40px] opacity-[0.12] group-hover:opacity-[0.22] transition-opacity duration-500"
-            style={{ background: project.color }}
-          />
-          <div className="relative w-28 h-28 transition-transform duration-300 group-hover:scale-105">
-            <Image
-              src={project.image}
-              alt={`${project.name} logo`}
-              fill
-              className="object-cover rounded-[28px]"
-              sizes="112px"
-            />
-          </div>
-        </div>
-      )}
+      <h3 className="text-lg font-semibold tracking-tight text-text-primary mb-3">
+        {project.name}
+      </h3>
+
+      <p className="text-sm text-text-secondary leading-relaxed mb-5">
+        {project.description}
+      </p>
+
+      <div className="flex flex-wrap gap-1.5 mt-auto">
+        {project.tags.map((tag) => (
+          <TechTag key={tag} label={tag} />
+        ))}
+      </div>
     </div>
   )
 }
@@ -114,42 +95,17 @@ function NormalCard({ project, index }: { project: Project; index: number }) {
         data-spotlight
         className="group block h-full rounded-[var(--radius-xl)] card-polished spotlight-card press-scale p-[var(--space-card-pad)]"
       >
-        {/* Color accent bar */}
-        <div
-          className="w-8 h-1 rounded-full mb-5 group-hover:w-14 transition-all duration-300"
-          style={{ background: project.color }}
-        />
-
-        <div className="flex items-start justify-between gap-4 mb-3">
-          {project.image ? (
-            <div className="flex items-center gap-3">
-              <div className="relative shrink-0">
-                {/* Glow behind icon */}
-                <div
-                  className="absolute inset-0 rounded-[var(--radius-sm)] blur-[12px] opacity-0 group-hover:opacity-[0.25] transition-opacity duration-400"
-                  style={{ background: project.color }}
-                />
-                <div className="relative w-10 h-10 rounded-[var(--radius-sm)] overflow-hidden opacity-70 group-hover:opacity-100 group-hover:-translate-y-0.5 transition-all duration-300">
-                  <Image
-                    src={project.image}
-                    alt={`${project.name} logo`}
-                    fill
-                    className="object-contain"
-                    sizes="40px"
-                  />
-                </div>
-              </div>
-              <h3 className="text-lg font-semibold tracking-tight text-text-primary">
-                {project.name}
-              </h3>
-            </div>
-          ) : (
-            <h3 className="text-lg font-semibold tracking-tight text-text-primary">
-              {project.name}
-            </h3>
-          )}
-          <GitHubIcon className="w-4 h-4 text-text-muted group-hover:text-text-secondary transition-colors shrink-0 mt-0.5" />
+        <div className="flex items-center justify-between mb-5">
+          <div
+            className="w-8 h-1 rounded-full group-hover:w-14 transition-all duration-300"
+            style={{ background: project.color }}
+          />
+          <GitHubIcon className="w-4 h-4 text-text-muted group-hover:text-text-secondary transition-colors" />
         </div>
+
+        <h3 className="text-lg font-semibold tracking-tight text-text-primary mb-3">
+          {project.name}
+        </h3>
 
         <p className="text-sm text-text-secondary leading-relaxed mb-5">
           {project.description}

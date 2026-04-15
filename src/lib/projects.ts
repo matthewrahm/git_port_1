@@ -8,8 +8,6 @@ export interface Project {
   url?: string
   /** Bento grid span: 'wide' = 2 cols, 'normal' = 1 col */
   size?: 'wide' | 'normal'
-  /** Path to project image/logo */
-  image?: string
 }
 
 export const projects: Project[] = [
@@ -22,17 +20,17 @@ export const projects: Project[] = [
     url: 'https://solduel.xyz',
     color: '#14F195',
     size: 'wide',
-    image: '/projects/solduel.png',
+
   },
   {
     id: 'lore',
-    name: 'Lore',
+    name: 'LORE',
     description: 'Solana meme coin intelligence platform. Scores dev wallets across launch history, flags rug patterns, and surfaces forming narratives before they peak.',
     tags: ['TypeScript', 'Next.js', 'Prisma', 'Solana'],
     github: 'https://github.com/matthewrahm/lore',
     color: '#9945FF',
     size: 'wide',
-    image: '/projects/LORE.jpg',
+
   },
   {
     id: 'hyper-track',
@@ -42,7 +40,7 @@ export const projects: Project[] = [
     github: 'https://github.com/matthewrahm/hyper-track',
     color: '#00C853',
     size: 'wide',
-    image: '/projects/hyper-track.png',
+
   },
   {
     id: 'solscope',
@@ -51,7 +49,7 @@ export const projects: Project[] = [
     tags: ['Rust', 'Tokio', 'Ratatui', 'Helius', 'DexScreener'],
     github: 'https://github.com/matthewrahm/solscope',
     color: '#4d9fff',
-    image: '/projects/solscope.jpg',
+
   },
   {
     id: 'solana-forge',
@@ -60,7 +58,7 @@ export const projects: Project[] = [
     tags: ['Rust', 'Tokio', 'PostgreSQL', 'Axum', 'WebSocket'],
     github: 'https://github.com/matthewrahm/solana-forge',
     color: '#f97316',
-    image: '/projects/solforge.png',
+
   },
   {
     id: 'hyper-fund',
@@ -69,6 +67,15 @@ export const projects: Project[] = [
     tags: ['Python', 'FastAPI', 'Next.js', 'Hyperliquid', 'ccxt'],
     github: 'https://github.com/matthewrahm/hyper-fund',
     color: '#3B82F6',
-    image: '/projects/hyper-fund.png',
+
+  },
+  {
+    id: 'hyper-copy',
+    name: 'hyper-copy',
+    description: 'Copy trading platform for Hyperliquid. Scores traders 0-100 on PnL, Sharpe, win rate, and drawdown. Monitors leader positions in real-time, generates mirror orders with per-position risk controls, and collects fees through Builder Code on every copied trade.',
+    tags: ['Python', 'FastAPI', 'SQLite', 'Next.js', 'Hyperliquid'],
+    github: 'https://github.com/matthewrahm/hyper-copy',
+    color: '#F59E0B',
+
   },
 ]
