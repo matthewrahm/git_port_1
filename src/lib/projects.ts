@@ -1,81 +1,53 @@
 export interface Project {
   id: string
   name: string
+  tagline: string
   description: string
   tags: string[]
-  github: string
-  color: string
+  github?: string
   url?: string
-  /** Bento grid span: 'wide' = 2 cols, 'normal' = 1 col */
-  size?: 'wide' | 'normal'
+  color: string
 }
 
 export const projects: Project[] = [
   {
     id: 'solduel',
     name: 'SolDuel',
-    description: 'PvP trading duels on Solana. Wager SOL on meme coin price movements in 30 and 60-second rounds. Over 1,000 SOL in volume wagered. Anchor smart contract handles escrow, settlement, and payouts entirely on-chain. Real-time matchmaking with Supabase, Telegram bot for notifications.',
-    tags: ['Rust', 'Anchor', 'Solana', 'Next.js', 'TypeScript', 'Supabase'],
+    tagline: 'PvP trading platform on Solana',
+    description:
+      'End-to-end production trading platform. Anchor/Rust program handles deterministic escrow, settlement, and payout logic fully on-chain. Next.js + TypeScript frontend with realtime matchmaking over Postgres subscriptions, sub-second round resolution, and Telegram notifications. Live with 1,000+ SOL wagered across 30 and 60-second rounds.',
+    tags: ['Rust', 'Anchor', 'Solana', 'Next.js', 'PostgreSQL'],
     github: 'https://github.com/matthewrahm/solduel',
     url: 'https://solduel.xyz',
-    color: '#14F195',
-    size: 'wide',
-
-  },
-  {
-    id: 'lore',
-    name: 'LORE',
-    description: 'Solana meme coin intelligence platform. Scores dev wallets across launch history, flags rug patterns, and surfaces forming narratives before they peak.',
-    tags: ['TypeScript', 'Next.js', 'Prisma', 'Solana'],
-    github: 'https://github.com/matthewrahm/lore',
-    color: '#9945FF',
-    size: 'wide',
-
+    color: '#ef4444',
   },
   {
     id: 'hyper-track',
     name: 'hyper-track',
-    description: 'Hyperliquid perpetual futures wallet discovery and tracking engine. Scans vault followers to find active traders, scores wallets on 10 risk-adjusted metrics (Sharpe, Sortino, drawdown, profit factor), classifies trading styles, and serves a live leaderboard. Async polling engine with priority queue, partitioned Postgres, and materialized views.',
+    tagline: 'Trader discovery and scoring engine',
+    description:
+      'Async Python ingest pipeline with a priority queue scans Hyperliquid vault followers and writes trades into partitioned Postgres tables. Scores wallets on 10 risk-adjusted metrics (Sharpe, Sortino, drawdown, profit factor) through materialized views, served via FastAPI and a Next.js leaderboard. Built for continuous discovery under exchange rate limits.',
     tags: ['Python', 'FastAPI', 'PostgreSQL', 'Next.js', 'Hyperliquid'],
     github: 'https://github.com/matthewrahm/hyper-track',
-    color: '#00C853',
-    size: 'wide',
-
+    color: '#2563eb',
+  },
+  {
+    id: 'zanmu',
+    name: 'Zanmu',
+    tagline: 'Always-on multi-agent AI orchestration',
+    description:
+      '24/7 production agentic AI system built on the Anthropic SDK. A root orchestrator coordinates specialized Claude subagents through structured task delegation: a planner/executor pair for tool-use workflows, a fully autonomous agent operating under hardcoded constraints, and a continuous scanner feeding a 4-gate decision pipeline. Persistent cross-session state, isolated tool scopes per agent, and a Telegram control plane for human-in-the-loop oversight.',
+    tags: ['Anthropic SDK', 'Python', 'Multi-Agent', 'Tool Use', 'Telegram'],
+    color: '#9945FF',
   },
   {
     id: 'solscope',
     name: 'solscope',
-    description: 'Terminal analytics dashboard for Solana wallets. Real-time portfolio with USD values, decoded transaction history, whale tracker with persistent config, and token lookup with live price ticker and security audits. Vim-style keyboard navigation, 30s auto-refresh sparklines.',
+    tagline: 'Terminal-native Solana wallet dashboard',
+    description:
+      'Concurrent Rust application built on Tokio with a Ratatui frontend. Streams real-time portfolio valuations, decodes on-chain transaction history via Helius RPC, tracks whale wallets with persistent local config, and runs token lookups with live price tickers and security audits. Full vim-style keyboard navigation, 30s auto-refresh sparklines.',
     tags: ['Rust', 'Tokio', 'Ratatui', 'Helius', 'DexScreener'],
     github: 'https://github.com/matthewrahm/solscope',
     color: '#4d9fff',
-
-  },
-  {
-    id: 'solana-forge',
-    name: 'solana-forge',
-    description: 'Real-time Solana blockchain indexer. Decodes DEX swaps from Raydium, Jupiter, and PumpFun using balance-diff analysis, stores in Postgres, and serves via REST API. Pipeline architecture with rate limiting and backpressure via tokio channels.',
-    tags: ['Rust', 'Tokio', 'PostgreSQL', 'Axum', 'WebSocket'],
-    github: 'https://github.com/matthewrahm/solana-forge',
-    color: '#f97316',
-
-  },
-  {
-    id: 'hyper-fund',
-    name: 'hyper-fund',
-    description: 'Cross-exchange funding rate scanner for Hyperliquid perpetuals. Aggregates rates across 5 exchanges and 8 HIP-3 deployers (stocks, commodities, forex), surfaces delta-neutral arbitrage spreads, and tracks per-position funding costs for any wallet.',
-    tags: ['Python', 'FastAPI', 'Next.js', 'Hyperliquid', 'ccxt'],
-    github: 'https://github.com/matthewrahm/hyper-fund',
-    color: '#3B82F6',
-
-  },
-  {
-    id: 'hyper-copy',
-    name: 'hyper-copy',
-    description: 'Copy trading platform for Hyperliquid. Scores traders 0-100 on PnL, Sharpe, win rate, and drawdown. Monitors leader positions in real-time, generates mirror orders with per-position risk controls, and collects fees through Builder Code on every copied trade.',
-    tags: ['Python', 'FastAPI', 'SQLite', 'Next.js', 'Hyperliquid'],
-    github: 'https://github.com/matthewrahm/hyper-copy',
-    color: '#F59E0B',
-
   },
 ]

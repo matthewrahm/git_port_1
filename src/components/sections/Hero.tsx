@@ -11,14 +11,12 @@ function GitHubIcon({ className }: { className?: string }) {
   )
 }
 
-const BIO_TEXT = 'Building on Solana. Trading tools, on-chain intelligence, DeFi.'
+const BIO_TEXT = 'Building. Trading tools, on-chain intelligence, low-latency systems.'
 const TYPE_SPEED = 40
 
 const NAV_ITEMS = [
   { label: 'About', id: 'about' },
-  { label: 'Experience', id: 'experience' },
   { label: 'Projects', id: 'projects' },
-  { label: 'Skills', id: 'skills' },
 ]
 
 function TypeReveal() {
@@ -53,7 +51,7 @@ function TypeReveal() {
 }
 
 export function Hero() {
-  const active = useActiveSection(['about', 'experience', 'projects', 'skills'])
+  const active = useActiveSection(['about', 'projects'])
 
   return (
     <aside className="lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[380px] flex flex-col justify-between px-10 pt-16 pb-12 relative z-10">

@@ -20,18 +20,26 @@ export function Projects() {
   }, [])
 
   return (
-    <section id="projects" className="px-6 sm:px-12 py-[var(--space-section)]">
+    <section
+      id="projects"
+      className="px-6 sm:px-12 pt-[calc(var(--space-section)*1.5)] pb-[calc(var(--space-section)*2)]"
+    >
       <div className="max-w-5xl">
         <RevealSection>
-          <p className="font-mono text-xs uppercase tracking-widest text-gradient-accent mb-10" data-text="Projects">
-            Projects
-          </p>
+          <header className="mb-16">
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em] text-gradient">
+              Projects
+            </h2>
+            <p className="text-sm text-text-muted mt-3">
+              Selected work across Solana and Hyperliquid.
+            </p>
+          </header>
         </RevealSection>
 
         <div
           ref={gridRef}
           onMouseMove={handleMouseMove}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
           {projects.map((project, i) => (
             <ProjectRow key={project.id} project={project} index={i} />

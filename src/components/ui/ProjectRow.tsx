@@ -20,107 +20,6 @@ function ExternalLinkIcon({ className }: { className?: string }) {
   )
 }
 
-function WideCardContent({ project }: { project: Project }) {
-  return (
-    <div className="flex flex-col">
-      <div className="flex items-center justify-between mb-5">
-        <div
-          className="w-8 h-1 rounded-full group-hover:w-14 transition-all duration-300"
-          style={{ background: project.color }}
-        />
-        {project.url ? (
-          <div className="flex items-center gap-2">
-            <a href={project.url} target="_blank" rel="noopener noreferrer" className="press-scale">
-              <ExternalLinkIcon className="w-4 h-4 text-text-muted hover:text-text-secondary transition-colors" />
-            </a>
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="press-scale">
-              <GitHubIcon className="w-4 h-4 text-text-muted hover:text-text-secondary transition-colors" />
-            </a>
-          </div>
-        ) : (
-          <a href={project.github} target="_blank" rel="noopener noreferrer" className="press-scale">
-            <GitHubIcon className="w-4 h-4 text-text-muted hover:text-text-secondary transition-colors" />
-          </a>
-        )}
-      </div>
-
-      <h3 className="text-lg font-semibold tracking-tight text-text-primary mb-3">
-        {project.name}
-      </h3>
-
-      <p className="text-sm text-text-secondary leading-relaxed mb-5">
-        {project.description}
-      </p>
-
-      <div className="flex flex-wrap gap-1.5 mt-auto">
-        {project.tags.map((tag) => (
-          <TechTag key={tag} label={tag} />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function WideCard({ project, index }: { project: Project; index: number }) {
-  const cardClasses = "group h-full rounded-[var(--radius-xl)] card-polished spotlight-card press-scale p-[var(--space-card-pad)]"
-
-  return (
-    <RevealSection delay={index * 80} className="md:col-span-2">
-      {project.url ? (
-        <div data-spotlight className={cardClasses}>
-          <WideCardContent project={project} />
-        </div>
-      ) : (
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-spotlight
-          className={`block ${cardClasses}`}
-        >
-          <WideCardContent project={project} />
-        </a>
-      )}
-    </RevealSection>
-  )
-}
-
-function NormalCard({ project, index }: { project: Project; index: number }) {
-  return (
-    <RevealSection delay={index * 80}>
-      <a
-        href={project.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-spotlight
-        className="group block h-full rounded-[var(--radius-xl)] card-polished spotlight-card press-scale p-[var(--space-card-pad)]"
-      >
-        <div className="flex items-center justify-between mb-5">
-          <div
-            className="w-8 h-1 rounded-full group-hover:w-14 transition-all duration-300"
-            style={{ background: project.color }}
-          />
-          <GitHubIcon className="w-4 h-4 text-text-muted group-hover:text-text-secondary transition-colors" />
-        </div>
-
-        <h3 className="text-lg font-semibold tracking-tight text-text-primary mb-3">
-          {project.name}
-        </h3>
-
-        <p className="text-sm text-text-secondary leading-relaxed mb-5">
-          {project.description}
-        </p>
-
-        <div className="flex flex-wrap gap-1.5 mt-auto">
-          {project.tags.map((tag) => (
-            <TechTag key={tag} label={tag} />
-          ))}
-        </div>
-      </a>
-    </RevealSection>
-  )
-}
-
 export function ProjectRow({
   project,
   index,
@@ -128,9 +27,63 @@ export function ProjectRow({
   project: Project
   index: number
 }) {
-  if (project.size === 'wide') {
-    return <WideCard project={project} index={index} />
-  }
+  return (
+    <RevealSection delay={index * 80}>
+      <article
+        data-spotlight
+        className="group relative h-full flex flex-col rounded-[var(--radius-xl)] card-polished spotlight-card p-7 sm:p-8 transition-transform duration-200 hover:-translate-y-1"
+      >
+        {/* Top row */}
+        <div className="flex items-center justify-between mb-6">
+          <span
+            className="block w-1.5 h-1.5 rounded-full"
+            style={{ background: project.color }}
+            aria-hidden
+          />
+          <div className="flex items-center gap-1">
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${project.name} live site`}
+                className="press-scale p-1.5 -m-1.5 rounded-md"
+              >
+                <ExternalLinkIcon className="w-4 h-4 text-text-muted hover:text-text-primary transition-colors" />
+              </a>
+            )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${project.name} on GitHub`}
+                className="press-scale p-1.5 -m-1.5 rounded-md"
+              >
+                <GitHubIcon className="w-4 h-4 text-text-muted hover:text-text-primary transition-colors" />
+              </a>
+            )}
+          </div>
+        </div>
 
-  return <NormalCard project={project} index={index} />
+        {/* Name + tagline */}
+        <h3 className="text-xl font-semibold tracking-tight text-text-primary mb-1.5">
+          {project.name}
+        </h3>
+        <p className="text-sm text-text-secondary mb-5">{project.tagline}</p>
+
+        {/* Description */}
+        <p className="text-sm text-text-muted leading-relaxed mb-6 flex-1">
+          {project.description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mt-auto">
+          {project.tags.map((tag) => (
+            <TechTag key={tag} label={tag} />
+          ))}
+        </div>
+      </article>
+    </RevealSection>
+  )
 }
