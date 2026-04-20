@@ -1,6 +1,7 @@
 import { Hero } from '@/components/sections/Hero'
 import { About } from '@/components/sections/About'
 import { Projects } from '@/components/sections/Projects'
+import { Activity } from '@/components/sections/Activity'
 import { Footer } from '@/components/sections/Footer'
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <main className="lg:ml-[380px] flex-1 relative z-10 animate-fade-in-up stagger-1">
         <About />
         <Projects />
+        <Activity />
         <Footer />
       </main>
     </div>

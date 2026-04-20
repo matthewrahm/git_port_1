@@ -17,6 +17,7 @@ const TYPE_SPEED = 40
 const NAV_ITEMS = [
   { label: 'About', id: 'about' },
   { label: 'Projects', id: 'projects' },
+  { label: 'Activity', id: 'activity' },
 ]
 
 function TypeReveal() {
@@ -51,7 +52,7 @@ function TypeReveal() {
 }
 
 export function Hero() {
-  const active = useActiveSection(['about', 'projects'])
+  const active = useActiveSection(['about', 'projects', 'activity'])
 
   return (
     <aside className="lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[380px] flex flex-col justify-between px-10 pt-16 pb-12 relative z-10">
