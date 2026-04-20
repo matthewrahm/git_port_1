@@ -41,13 +41,13 @@ export const projects: Project[] = [
     color: '#9945FF',
   },
   {
-    id: 'solscope',
-    name: 'solscope',
-    tagline: 'Terminal-native Solana wallet dashboard',
+    id: 'clawnicle',
+    name: 'clawnicle',
+    tagline: 'Durable runtime for LLM agents',
     description:
-      'Concurrent Rust application built on Tokio with a Ratatui frontend. Streams real-time portfolio valuations, decodes on-chain transaction history via Helius RPC, tracks whale wallets with persistent local config, and runs token lookups with live price tickers and security audits. Full vim-style keyboard navigation, 30s auto-refresh sparklines.',
-    tags: ['Rust', 'Tokio', 'Ratatui', 'Helius', 'DexScreener'],
-    github: 'https://github.com/matthewrahm/solscope',
+      'Temporal-style durable execution, redesigned for LLM agents. Rust workflows compile to event-sourced journals over SQLite WAL: on crash, replay short-circuits completed tool calls from the log and resumes from the last successful step. Exponential-backoff retries, per-workflow token and wallclock budgets, cooperative cancellation, and Anthropic prompt caching keyed on SHA-256 of the request. Journal writes at ~21µs; cached replay short-circuit at ~3.7µs.',
+    tags: ['Rust', 'Tokio', 'SQLite', 'Anthropic SDK', 'Event Sourcing'],
+    github: 'https://github.com/matthewrahm/clawnicle',
     color: '#4d9fff',
   },
 ]
